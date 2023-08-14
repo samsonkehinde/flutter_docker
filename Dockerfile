@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # Prerequisites
-RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget
+RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-17-jdk wget
 
 # Setup new user
 RUN useradd -ms /bin/bash developer
@@ -11,6 +11,7 @@ WORKDIR /home/developer
 # Prepare Android directories and system variables
 RUN mkdir -p Android/sdk
 ENV ANDROID_HOME /home/developer/Android/sdk
+ENV JAVA_HOME /usr/bin/java
 RUN mkdir -p .android && touch .android/repositories.cfg
 
 # Setup Android SDK
